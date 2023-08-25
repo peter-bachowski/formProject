@@ -1,7 +1,9 @@
 function addForm () {
     const mainBody = document.querySelector('.mainBody');
-    const formContainer = document.createElement('div');
+    const formContainer = document.createElement('form');
+    const form = document.createElement('div');
     const formTitle = document.createElement('div');
+    const submitBtn = document.createElement('button');
 
     const firstNameLabel = document.createElement('label');
     const lastNameLabel = document.createElement('label');
@@ -27,15 +29,25 @@ function addForm () {
     const pwContainer = document.createElement('div');
     const pwConfContainer = document.createElement('div');
 
-    formTitle.classList.add('formTitle');
     formContainer.classList.add('formContainer');
-    firstNameContainer.classList.add('firstNameContainer');
-    lastNameContainer.classList.add('lastNameContainer');
-    emailContainer.classList.add('emailContainer');
-    countryContainer.classList.add('countryContainer');
-    zipContainer.classList.add('zipContainer');
-    pwContainer.classList.add('pwContainer');
-    pwConfContainer.classList.add('pwConfContainer');
+    submitBtn.classList.add('submitBtn');
+    formTitle.classList.add('formTitle');
+    form.classList.add('form');
+    firstNameContainer.classList.add('formItemContainer');
+    lastNameContainer.classList.add('formItemContainer');
+    emailContainer.classList.add('formItemContainer');
+    countryContainer.classList.add('formItemContainer');
+    zipContainer.classList.add('formItemContainer');
+    pwContainer.classList.add('formItemContainer');
+    pwConfContainer.classList.add('formItemContainer');
+
+    firstNameInput.id = 'userFirstName';
+    lastNameInput.id = 'userLastName';
+    emailInput.id = 'userEmail';
+    countryInput.id = 'userCountry';
+    zipInput.id = 'userZip';
+    pwInput.id = 'userPw';
+    pwConfInput.id = 'userPwConf';    
 
     formTitle.innerText = 'Sign Up Form';
 
@@ -54,40 +66,8 @@ function addForm () {
     pwConfLabel.for = 'pwConf';
     pwConfLabel.innerText = 'Password Confirmation: ';
 
-    firstNameInput.type = 'text';
-    firstNameInput.pattern = '[a-zA-Z ]+';
-    firstNameInput.name = 'userFirstName';
-    firstNameInput.id = 'userFirstName';
-
-    lastNameInput.type = 'text';
-    lastNameInput.pattern = '[a-zA-Z ]+';
-    lastNameInput.name = 'userLastName';
-    lastNameInput.id = 'userLastName';
-
-    emailInput.type = 'email';
-    //emailInput.pattern = '[a-zA-Z ]+';
-    emailInput.name = 'userEmail';
-    emailInput.id = 'userEmail';
-
-    countryInput.type = 'text';
-    countryInput.pattern = '[a-zA-Z ]+';
-    countryInput.name = 'userCountry';
-    countryInput.id = 'userCountry';
-
-    zipInput.type = 'text';
-    zipInput.pattern = '[a-zA-Z ]+';
-    zipInput.name = 'userZip';
-    zipInput.id = 'userZip';
-
-    pwInput.type = 'text';
-    pwInput.pattern = '[a-zA-Z ]+';
-    pwInput.name = 'userPw';
-    pwInput.id = 'userPw';
-
-    pwConfInput.type = 'text';
-    pwConfInput.pattern = '[a-zA-Z ]+';
-    pwConfInput.name = 'userPwConf';
-    pwConfInput.id = 'userPwConf';
+    submitBtn.type = 'submit';
+    submitBtn.innerText = 'Submit';
 
     firstNameContainer.appendChild(firstNameLabel);
     firstNameContainer.appendChild(firstNameInput);
@@ -105,15 +85,33 @@ function addForm () {
     pwConfContainer.appendChild(pwConfInput);
 
     formContainer.appendChild(formTitle);
-    formContainer.appendChild(firstNameContainer);
-    formContainer.appendChild(lastNameContainer);
-    formContainer.appendChild(emailContainer);
-    formContainer.appendChild(countryContainer);
-    formContainer.appendChild(zipContainer);
-    formContainer.appendChild(pwContainer);
-    formContainer.appendChild(pwConfContainer);
+    form.appendChild(firstNameContainer);
+    form.appendChild(lastNameContainer);
+    form.appendChild(emailContainer);
+    form.appendChild(countryContainer);
+    form.appendChild(zipContainer);
+    form.appendChild(pwContainer);
+    form.appendChild(pwConfContainer);
+    formContainer.appendChild(form);
+    formContainer.appendChild(submitBtn);
 
     mainBody.appendChild(formContainer);
+
+    //listeners
+
+    window.addEventListener('resize', resizeElements);
+    window.onload = resizeElements;
+
+    //functions 
+
+    function resizeElements () {
+        if (mainBody.clientWidth <= 660) {
+            form.style.gridTemplateColumns = '300px';
+        }
+        else {
+            form.style.gridTemplateColumns = '300px 300px';
+        }
+    }
     
 }
 
