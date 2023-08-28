@@ -52,10 +52,17 @@ body, html {
   .form {
     display: grid;
     gap: 20px;
-    grid-template-columns: 300px 300px;
     justify-content: center;
     padding-top: 50px;
     padding-bottom: 50px;
+  }
+
+  .form.full {
+    grid-template-columns: 400px 400px;
+  }
+
+  .form.stretched {
+    grid-template-columns: 400px;
   }
 
   .formTitle {
@@ -75,13 +82,19 @@ body, html {
     background-color: #059862;
     color: white;
     cursor: pointer;
+    font-size: 25px;
   }
 
   .form input:valid {
-    background-color: rgb(172, 255, 172);
+    background-color: rgb(207, 255, 207);
   }
 
   .form input:invalid {
-    background-color: rgb(255, 163, 163);
+    background-color: rgb(253, 193, 193);
+  }
+
+  input {
+    height: 30px;
+    font-size: 20px;
   }
   

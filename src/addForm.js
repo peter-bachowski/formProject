@@ -1,4 +1,6 @@
 function addForm () {
+    const resizeWidth = 910;
+
     const mainBody = document.querySelector('.mainBody');
     const formContainer = document.createElement('form');
     const form = document.createElement('div');
@@ -105,11 +107,14 @@ function addForm () {
     //functions 
 
     function resizeElements () {
-        if (mainBody.clientWidth <= 660) {
-            form.style.gridTemplateColumns = '300px';
+        if (mainBody.clientWidth <= resizeWidth) {
+            form.classList.remove('full');
+            form.classList.add('stretched');
         }
         else {
-            form.style.gridTemplateColumns = '300px 300px';
+
+            form.classList.remove('stretched');
+            form.classList.add('full');
         }
     }
     
